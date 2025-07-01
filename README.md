@@ -36,4 +36,30 @@ git commit -m "feat: Adiciona módulo de controle de altitude"
 git push origin develop
 ```
 
-Para sincronizar
+Quando o desenvolvimento do módulo estiver concluído na `develop`, é hora de mesclá-lo com a branch `test` para verificar a compatibilidade
+
+```
+git checkout test
+git pull origin test
+```
+
+Faça o merge da develop na `test`. Este comando irá trazer todo o código que você fez na `develop` para dentro da `test`.
+```
+git merge develop
+
+# Envie a branch test atualizada para o GitHub.
+git push origin test
+```
+
+Se todos os testes na branch test passaram com sucesso, o código está pronto para ser incorporado na branch principal (main).
+```
+# Mude para a branch main e atualize-a.
+git checkout main
+git pull origin main
+
+# O conteúdo testado e aprovado da 'test' é mesclado na 'main'
+git merge test
+
+# Envie a versão final para o GitHub.
+git push origin main
+```
